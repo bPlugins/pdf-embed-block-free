@@ -1,0 +1,48 @@
+$primaryColor: #4527a4;
+
+.dashicons {
+	font-family: dashicons !important;
+}
+
+.wp-block-peb-pdf-embed {
+	.pebPDFEmbed {
+		text-align: center;
+	}
+
+	.pebSizedContainer {
+		max-width: 100%;
+		display: inline-block;
+	}
+
+	.pebInLine {
+		max-width: 100%;
+		display: inline-block;
+	}
+
+	.pebFullWindow {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		z-index: 999999;
+		background: #fff;
+	}
+	
+	.pebLightbox {
+		display: inline-block;
+		padding: 14px 22px;
+		background: #f2f2f2;
+		border: 1px solid #ccc;
+		border-radius: 6px;
+		cursor: pointer;
+		transition: 0.2s ease;
+
+		&:hover {
+			background: #e9e9e9;
+		}
+	}
+	
+
+	
+}

@@ -1,0 +1,33 @@
+{
+	"name": "pdf-embed-block",
+	"version": "1.0.0",
+	"description": "Show PDF file on your web page",
+	"main": "index.js",
+	"author": "Md. Shamim Islam",
+	"license": "ISC",
+	"scripts": {
+		"start": "wp-scripts start --webpack-copy-php",
+		"lint": "eslint src",
+		"packages-update": "wp-scripts packages-update",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"format": "wp-scripts format",
+		"build": "wp-scripts build --webpack-copy-php",
+		"i18n-pot": "wp i18n make-pot . languages/pdf-embed-block.pot --exclude=\"src\" && cp ./languages/pdf-embed-block.pot ./languages/pdf-embed-block-en_US.po",
+		"i18n-json": "wp i18n make-json languages/ --no-purge",
+		"i18n-mo": "wp i18n make-mo languages/",
+		"i18n": "npm run i18n-pot && npm run i18n-json && npm run i18n-mo",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"make-zip": "npm run build && (npm run i18n || node -e \"console.log('i18n failed')\") && gulp bundle && gulp zip && node -e \"const fs = require('fs'); const rm = () => { try { fs.rmSync('bundled', { recursive: true, force: true }); } catch (e) { if (e.code === 'EPERM') { setTimeout(rm, 100); } else { throw e; } } }; rm();\""
+	},
+	"dependencies": {
+		"immer": "^10.1.3",
+		"react-router-dom": "^7.9.4"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^27.9.0",
+		"eslint-webpack-plugin": "^4.2.0",
+		"gulp": "^5.0.1",
+		"gulp-zip": "^6.1.0"
+	}
+}

@@ -1,0 +1,112 @@
+$primaryColor: #4527a4;
+
+.bplMediaPlaceholder {
+	.bplUrlInput {
+		.components-text-control__input {
+			width: 200px !important;
+		}
+	}
+}
+
+// Spinner
+.pebSpinnerContainer {
+	font-size: 25px;
+	font-weight: 600;
+	color: $primaryColor;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+
+	.components-spinner {
+		width: 30px;
+		height: 30px;
+		color: $primaryColor;
+		margin: 0;
+
+		circle,
+		path {
+			stroke-width: 5px;
+		}
+	}
+}
+
+// Notice
+.pebApiKeyNotice {
+	font-size: 16px;
+	font-weight: 600;
+	padding: 10px;
+}
+
+.bPlPanelBody .pebSpinnerContainer .components-spinner {
+	background-color: transparent !important;
+}
+
+// Form
+.pebPDFPlaceholder {
+	.components-placeholder__fieldset {
+		flex-direction: column !important;
+
+		.pdfSettingsForm {
+			display: flex;
+			flex-wrap: wrap;
+
+			.bplMediaPlaceholder {
+				.bplUrlInput input {
+					width: 250px;
+				}
+			}
+		}
+	}
+
+	.saveSettings:disabled,
+	.saveSettings[disabled] {
+		opacity: .7;
+	}
+
+	.helpText {
+		display: block;
+		// margin-top: 6px;
+		font-size: 12px;
+		color: #666;
+	}
+}
+
+
+.saveSettings {
+	background-color: #146EF5 !important;
+	color: #fff !important;
+	cursor: pointer;
+	border: none;
+	width: 35px;
+	height: 40px;
+	border-radius: 0 2px 2px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+// PDF Embed
+.wp-block-peb-pdf-embed {
+	position: relative;
+
+	.bPlBlockBeforeSelect {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 9999;
+	}
+
+	// .pebFullWindow {
+	// 	position: absolute;
+	// 	width: 100%;
+	// 	height: 100vh;
+	// 	top: 0;
+	// 	left: 0;
+	// 	z-index: 999999;
+	// }
+}
