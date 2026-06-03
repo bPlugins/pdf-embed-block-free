@@ -2,6 +2,10 @@
 
 namespace PEB;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Init {
     function __construct() {
         add_action( 'init', [ $this, 'onInit' ] );    

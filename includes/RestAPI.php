@@ -2,6 +2,10 @@
 
 namespace PEB;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class RestAPI {
     public function __construct() {
 		add_action( 'wp_ajax_pebSaveUninstallOption', [ $this, 'peb_save_uninstall_option' ] );

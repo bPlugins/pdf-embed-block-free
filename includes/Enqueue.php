@@ -2,6 +2,10 @@
 
 namespace PEB;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Enqueue {
     function __construct() {
         add_action( 'enqueue_block_assets', [$this, 'enqueueBlockAssets'] );

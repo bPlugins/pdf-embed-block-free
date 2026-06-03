@@ -51,7 +51,6 @@ export const dashboardInfo = (info) => {
 					"Improved: Unlocked previously locked pro fields in the Gutenberg editor and introduced a clean, non-intrusive notices UI to display premium feature requirements.",
 					"Fixed: Resolved block focus loss and selection issues inside Gutenberg by preventing the PDF iframe from stealing focus, ensuring the block settings panel remains open.",
 					"Fixed: Resolved the \"DivId is not present in HTML document\" console error caused by character sanitization mismatches with the Adobe PDF Embed SDK.",
-					"Fixed: Fixed a PHP syntax parsing error inside AdminMenu.php settings serialization."
 				]
 			},
 			{

@@ -2,6 +2,10 @@
 
 namespace PEB;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class CustomColumn {
     function __construct() {
         add_filter('manage_pdf_embed_posts_columns', [$this, 'ManageColumns'], 10);

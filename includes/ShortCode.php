@@ -1,6 +1,10 @@
 <?php
 namespace PEB;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Shortcode {
     function __construct() {
         add_shortcode('pdf_embed', [$this, 'peb_shortcode']);

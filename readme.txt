@@ -158,7 +158,6 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 * **Improved:** Unlocked previously locked pro fields in the Gutenberg editor and introduced a clean, non-intrusive notices UI to display premium feature requirements.
 * **Fixed:** Resolved block focus loss and selection issues inside Gutenberg by preventing the PDF iframe from stealing focus, ensuring the block settings panel remains open.
 * **Fixed:** Resolved the "DivId is not present in HTML document" console error caused by character sanitization mismatches with the Adobe PDF Embed SDK.
-* **Fixed:** Fixed a PHP syntax parsing error inside AdminMenu.php settings serialization.
 
 = 1.2.5 - 13 Apr, 2026 =
 * **Fixed:** Minor bug fixes and general optimizations for smoother performance.
