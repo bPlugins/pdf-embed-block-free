@@ -5,7 +5,7 @@
 [![WordPress Support](https://img.shields.io/badge/WordPress-6.5+-blue.svg?style=flat-square&logo=wordpress)](https://wordpress.org/plugins/pdf-embed-block/)
 [![PHP Support](https://img.shields.io/badge/PHP-7.1+-777bb4.svg?style=flat-square&logo=php)](https://wordpress.org/plugins/pdf-embed-block/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-green.svg?style=flat-square)](https://wordpress.org/plugins/pdf-embed-block/)
-[![Stable Version](https://img.shields.io/badge/Version-1.3.0-blue.svg?style=flat-square)](https://wordpress.org/plugins/pdf-embed-block/)
+[![Stable Version](https://img.shields.io/badge/Version-1.3.1-blue.svg?style=flat-square)](https://wordpress.org/plugins/pdf-embed-block/)
 
 **PDF Embed Block** is a lightweight, high-performance, and fully responsive Gutenberg block and shortcode plugin for WordPress. It allows your website visitors to view and embed PDF files easily in your posts or pages using the official Adobe PDF Embed API.
 

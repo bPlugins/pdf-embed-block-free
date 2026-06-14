@@ -7,23 +7,23 @@ import Activation from '../../../../bpl-tools/Admin/Activation';
 import OurPlugins from '../../../../bpl-tools/Admin/OurPlugins';
 
 import Layout from './Layout';
-import Welcome from './Welcome';
-import { demoInfo, pricingInfo } from '../utils/data';
+import Welcome from '../../../../bpl-tools/Admin/Welcome';
+import { demoInfo, pricingInfo, welcomeInfo } from '../utils/data';
 import useBlocksSettings from '../hooks/useBlocksSettings';
 import blocks from '../utils/blocks';
 import Blocks from '../../../../bpl-tools/Admin/Blocks';
 import Settings from './Settings';
 
 const App = (props) => {
-	const { isPremium, hasPro, action, nonce } = props;
+	const { isPremium, hasPro, action, nonce, adminUrl } = props;
 	const { data, internalStatus, saveToBackend } = useBlocksSettings(action, nonce);
 
 	return <Router>
 		<Routes>
 			<Route path='/' element={<Layout {...props} />}>
-				<Route index element={<Welcome {...props} />} />
+				<Route index element={<Welcome {...props} {...welcomeInfo(adminUrl)} />} />
 
-				<Route path='welcome' element={<Welcome {...props} />} />
+				<Route path='welcome' element={<Welcome {...props} {...welcomeInfo(adminUrl)} />} />
 
 				<Route path='blocks' element={
 					<Blocks

@@ -60,14 +60,14 @@ const ShortCode = ({ shortcode }) => {
     };
 
     return (
-        <div className="printPageShortCode">
-            <div className="printPageShortCodeInner">
-                <div className="printPageShortCodeInputWrapper">
+        <div className="pdfEmbedShortCode">
+            <div className="pdfEmbedShortCodeInner">
+                <div className="pdfEmbedShortCodeInputWrapper">
                     <span ref={tooltip} className="tooltip">
                         Copy To Clipboard
                     </span>
 
-                    <div className="printPageShortCodeInput">
+                    <div className="pdfEmbedShortCodeInput">
                         <input
                             ref={inputRef}
                             readOnly
@@ -76,7 +76,7 @@ const ShortCode = ({ shortcode }) => {
                         />
                     </div>
 
-                    <div className="printPageShortCodeCopyBtn" onClick={handleCopy}>
+                    <div className="pdfEmbedShortCodeCopyBtn" onClick={handleCopy}>
                         {copied ? (
                             "✓"
                         ) : (
@@ -96,7 +96,7 @@ const ShortCode = ({ shortcode }) => {
                         )}
                     </div>
                 </div>
-                <div className="printPageShortCodeHeader">
+                <div className="pdfEmbedShortCodeHeader">
                     <span>Copy the shortcode and use it anywhere.</span>
                 </div>
             </div>

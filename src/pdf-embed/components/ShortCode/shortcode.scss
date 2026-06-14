@@ -5,7 +5,7 @@ $textColor: #64748b;
 $inputBg: #ffffff;
 $shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
 
-.printPageShortCode {
+.pdfEmbedShortCode {
     padding: 6px;
     background: $bgLight;
     border: 1px solid rgba($borderColor, 0.4);
@@ -17,7 +17,7 @@ $shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
     max-width: 100%;
     box-sizing: border-box;
 
-    .printPageShortCodeInner {
+    .pdfEmbedShortCodeInner {
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -30,13 +30,13 @@ $shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
         margin: 10px 0;
         width: 100%;
 
-        .printPageShortCodeInner {
+        .pdfEmbedShortCodeInner {
             flex-direction: column;
             align-items: stretch;
             gap: 8px;
         }
 
-        .printPageShortCodeHeader {
+        .pdfEmbedShortCodeHeader {
             span {
                 text-align: left;
                 font-size: 13px;
@@ -47,12 +47,12 @@ $shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
             }
         }
 
-        .printPageShortCodeInputWrapper {
+        .pdfEmbedShortCodeInputWrapper {
             min-width: 100%;
         }
     }
 
-    .printPageShortCodeHeader {
+    .pdfEmbedShortCodeHeader {
         margin-bottom: 0px;
         flex-shrink: 0;
 
@@ -66,7 +66,7 @@ $shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
         }
     }
 
-    .printPageShortCodeInputWrapper {
+    .pdfEmbedShortCodeInputWrapper {
         display: flex;
         align-items: center;
         background: $inputBg;
@@ -131,7 +131,7 @@ $shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
         }
     }
 
-    .printPageShortCodeInput {
+    .pdfEmbedShortCodeInput {
         flex-grow: 1;
         box-sizing: border-box;
         min-width: 0;
@@ -155,7 +155,7 @@ $shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
         }
     }
 
-    .printPageShortCodeCopyBtn {
+    .pdfEmbedShortCodeCopyBtn {
         flex-shrink: 0;
         display: flex;
         align-items: center;
