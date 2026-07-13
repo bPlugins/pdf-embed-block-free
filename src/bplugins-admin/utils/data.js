@@ -1,5 +1,5 @@
 import {
-	gutenbergTabIcon, shortcodeTabIcon,
+	gutenbergTabIcon, shortcodeTabIcon, elementorTabIcon,
 	docEmbedder, excelEmbedder, excelViewer, flipbookPdfIcon, googleDocsViewer, googleSheets,
 	googleSlides, mozilaPDF, nativePdfIcon, pdfIcon, powerpointEmbedder, powerpointViewer, sleekPdfIcon, wordViewer
 } from "./icons";
@@ -31,7 +31,6 @@ export const dashboardInfo = (info) => {
 		pages: {
 			org: `https://wordpress.org/plugins/${slug}/`,
 			landing: `https://bplugins.com/products/${slug}/`,
-			// docs: `https://bplugins.com/docs/${slug}/`,
 			docs: `https://bblockswp.com/docs/${slug}`,
 			pricing: `https://bplugins.com/products/${slug}/pricing`,
 		},
@@ -207,10 +206,40 @@ export const welcomeInfo = (adminUrl) => ({
 						body: 'Copy the generated shortcode (e.g. <code>[pdf_embed id="123"]</code>) from the PDF editing screen or the list, and paste it into any page, post, or widget.'
 					}
 				]
+			},
+			{
+				key: 'elementor',
+				label: 'Elementor',
+				icon: elementorTabIcon,
+				steps: [
+					{
+						num: 1,
+						title: 'Create a New PDF Embed',
+						body: 'Go to <strong>PDF Embed -> Add New</strong>. Enter a title, upload your PDF file, configure options, and click <strong>Publish</strong> to generate a shortcode.',
+						link: { url: `${adminUrl}post-new.php?post_type=pdf_embed`, label: 'Add New' }
+					},
+					{
+						num: 2,
+						title: 'Open Elementor Editor',
+						body: 'Open the Elementor editor on any page or post. Search for the <strong>Shortcode</strong> widget and drag it to your desired layout section.'
+					},
+					{
+						num: 3,
+						title: 'Embed Shortcode',
+						body: 'Paste the generated shortcode (e.g. <code>[pdf_embed id="123"]</code>) into the Shortcode widget content settings, and then update/publish the page.'
+					}
+				]
 			}
 		]
 	},
 	changelogs: [
+		{
+			type: 'new',
+			version: '1.3.2 - 13 Jul, 2026',
+			list: [
+				'Added: Elementor getting started instructions.'
+			]
+		},
 		{
 			type: 'update',
 			version: '1.3.1 - 14 June, 2026',
