@@ -1,16 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
-import { Placeholder, Spinner } from '@wordpress/components';
+import { Spinner } from '@wordpress/components';
 import { MediaPlaceholder } from '../../../bpl-tools/Components';
 import { tabController } from '../../../bpl-tools/utils/functions';
 import Style from './Style';
 import ViewSDKClient from './ViewSDKClient';
-import SettingsSaveForm from './SettingsSaveForm';
 import useWPOptionQuery from './hooks/useWPOptionQuery';
 import useWPOptionMutation from './hooks/useWPOptionMutation';
 import Settings from './Settings';
 import { withSelect } from '@wordpress/data';
 import ShortCode from './components/ShortCode/ShortCode';
+
+import ApiKeyPlaceholder from './ApiKeyPlaceholder';
 
 const Edit = props => {
 	const { className, attributes, setAttributes, clientId, isSelected, currentPostId, CPTType } = props;
@@ -54,24 +55,10 @@ const Edit = props => {
 
 		{CPTType === "pdf_embed" && <ShortCode {...{ shortcode }} />}
 
-		{!apiKey ? <Placeholder className='MediaPlaceholder pebPDFPlaceholder' label={__(`API Key (Client ID)`, 'pdf-embed-block')} icon='pdf'>
-			<p>
-				{__('Generate a PDF Embed API Key (Client ID) from ', 'pdf-embed-block')}
+		{!apiKey ? (
+			<ApiKeyPlaceholder data={apiKey} saveData={saveData} isLoading={isLoading} />
+		) :
 
-				<a
-					href='https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api'
-					target='_blank'
-					rel='noreferrer'>
-					{__('here', 'pdf-embed-block')}
-				</a>
-
-				{__('. Then enter the Client ID in the settings panel on the right.', 'pdf-embed-block')}
-			</p>
-
-			<div className='pdfSettingsForm'>
-				<SettingsSaveForm {...{ data: apiKey, dataLoading, saveData, isLoading }} />
-			</div>
-		</Placeholder> :
 
 			file?.url ? <div
 				className={className}
