@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import ViewSDKClient from '../ViewSDKClient';
 
-const Lightbox = ({ attributes, clientId, pebAPIKey, buttonText = 'View PDF' }) => {
+const Lightbox = ({ attributes, clientId, pebAPIKey, globalViewerOptions, buttonText = 'View PDF' }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
@@ -13,11 +13,13 @@ const Lightbox = ({ attributes, clientId, pebAPIKey, buttonText = 'View PDF' }) 
 					`pebPDFArea_${clientId}`,
 					{ embedMode: 'LIGHTBOX' },
 					attributes,
-					pebAPIKey
+					pebAPIKey,
+					globalViewerOptions
 				);
 			});
 		}
-	}, [isOpen, attributes, clientId, pebAPIKey]);
+	}, [isOpen, attributes, clientId, pebAPIKey, globalViewerOptions]);
+
 
 	return (
 		<>

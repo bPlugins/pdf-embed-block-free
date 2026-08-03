@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const allPDFEmbed = document.querySelectorAll('.wp-block-peb-pdf-embed');
 
 	allPDFEmbed.forEach(pdfEmbed => {
-		const { attributes, pebAPIKey } = JSON.parse(pdfEmbed.dataset.props);
+		const { attributes, pebAPIKey, globalViewerOptions } = JSON.parse(pdfEmbed.dataset.props);
 		const { cId, file } = attributes || {};
 		const safeCId = cId ? cId.replace(/-/g, '_') : '';
 
@@ -16,12 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				{
 					file?.url && <>
 						<Style {...{ attributes, clientId: safeCId }} />
-						<PDFEmbed {...{ attributes, clientId: safeCId, pebAPIKey }} />
+						<PDFEmbed {...{ attributes, clientId: safeCId, pebAPIKey, globalViewerOptions }} />
 					</>
 				}
 
 			</div >
 		);
+
 
 		pdfEmbed?.removeAttribute('data-props');
 	});

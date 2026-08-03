@@ -5,7 +5,7 @@
 [![WordPress Support](https://img.shields.io/badge/WordPress-6.5+-blue.svg?style=flat-square&logo=wordpress)](https://wordpress.org/plugins/pdf-embed-block/)
 [![PHP Support](https://img.shields.io/badge/PHP-7.1+-777bb4.svg?style=flat-square&logo=php)](https://wordpress.org/plugins/pdf-embed-block/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-green.svg?style=flat-square)](https://wordpress.org/plugins/pdf-embed-block/)
-[![Stable Version](https://img.shields.io/badge/Version-1.3.2-blue.svg?style=flat-square)](https://wordpress.org/plugins/pdf-embed-block/)
+[![Stable Version](https://img.shields.io/badge/Version-1.3.3-blue.svg?style=flat-square)](https://wordpress.org/plugins/pdf-embed-block/)
 
 **PDF Embed Block** is a lightweight, high-performance, and fully responsive Gutenberg block and shortcode plugin for WordPress. It allows your website visitors to view and embed PDF files easily in your posts or pages using the official Adobe PDF Embed API.
 
@@ -16,6 +16,8 @@
 ### 💎 Core Functionality (Free)
 Everything you need to add a seamless PDF viewer to your website:
 - **Adobe PDF Embed Engine:** Renders high-fidelity, interactive, and crisp vector-drawn PDF files directly on your page.
+- **Global PDF Viewer Settings Profile:** Configure site-wide default viewer options (Download, Print, Fullscreen) or enforce settings globally.
+- **Viewer Toolbar Options:** Easily toggle Show Download PDF, Show Print PDF, and Show Fullscreen Mode on or off per block or site-wide.
 - **2 Embed Modes:**
   - **Sized Container:** Embed the PDF in a designated width and height container.
   - **In-Line:** Display the PDF inline with the webpage layout.
@@ -26,11 +28,10 @@ Everything you need to add a seamless PDF viewer to your website:
 
 ### 👑 Premium Power (Pro)
 Unlock advanced styling and viewer control:
-- **Show Download PDF Toggle:** Allow or restrict visitors from downloading the PDF file directly.
-- **Show Print PDF Toggle:** Allow or restrict visitors from printing the PDF directly.
-- **Show Fullscreen Mode Toggle:** Allow or restrict fullscreen reading mode.
+- **Multiple Document Viewer Blocks:** Display PDF, Word, Excel, Google Docs, Slides, and Flipbooks with different viewer styles.
 - **Layout Spacing Controls:** Custom padding and margins for your PDF viewer.
 - **Custom Borders & Shadows:** Design beautiful containers with custom borders (style, width, color, radius) and multi-layered box shadows.
+
 
 ---
 

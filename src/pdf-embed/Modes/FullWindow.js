@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import ViewSDKClient from '../ViewSDKClient';
 
-const FullWindow = ({ attributes, clientId, pebAPIKey }) => {
+const FullWindow = ({ attributes, clientId, pebAPIKey, globalViewerOptions }) => {
 	useEffect(() => {
 		const viewSDKClient = new ViewSDKClient();
 
@@ -10,10 +10,12 @@ const FullWindow = ({ attributes, clientId, pebAPIKey }) => {
 				`pebPDFArea_${clientId}`,
 				{ embedMode: 'FULL_WINDOW' },
 				attributes,
-				pebAPIKey
+				pebAPIKey,
+				globalViewerOptions
 			);
 		});
-	}, [attributes, clientId, pebAPIKey]);
+	}, [attributes, clientId, pebAPIKey, globalViewerOptions]);
+
 
 	return (
 		<div

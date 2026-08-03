@@ -27,3 +27,19 @@ if( !class_exists( 'PEB_PDFEmbed' ) ){
     }
     new PEB_PDFEmbed();
 }
+
+if ( ! function_exists( 'pebGetGlobalViewerOptions' ) ) {
+	function pebGetGlobalViewerOptions() {
+		$defaults = [
+			'showDownloadPDF' => false,
+			'showPrintPDF'    => false,
+			'showFullScreen'  => true,
+			'forceGlobal'     => false,
+		];
+		$saved = get_option( 'peb_global_viewer_options', [] );
+		if ( ! is_array( $saved ) ) {
+			$saved = [];
+		}
+		return array_merge( $defaults, $saved );
+	}
+}

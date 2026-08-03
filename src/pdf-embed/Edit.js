@@ -73,11 +73,11 @@ const Edit = props => {
 			</div>
 		</Placeholder> :
 
-			file?.url ? <div 
-				className={className} 
-				id={`pebPDFEmbed_${clientId.replace(/-/g, '_')}`} 
-				style={{ 
-					position: 'relative', 
+			file?.url ? <div
+				className={className}
+				id={`pebPDFEmbed_${clientId.replace(/-/g, '_')}`}
+				style={{
+					position: 'relative',
 					minHeight: attributes.height || '469px',
 					width: '100%'
 				}}
@@ -89,7 +89,7 @@ const Edit = props => {
 			>
 				<Style attributes={attributes} clientId={clientId.replace(/-/g, '_')} />
 
-				<div 
+				<div
 					className="bPlBlockBeforeSelect"
 					style={{
 						position: 'absolute',

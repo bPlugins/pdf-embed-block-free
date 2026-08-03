@@ -24,9 +24,14 @@ class ViewSDKClient {
 		return this.readyPromise;
 	}
 
-	previewFile(divId, viewerConfig, attributes, pebAPIKey) {
+	previewFile(divId, viewerConfig, attributes, pebAPIKey, passedGlobalOptions) {
 		const { file, options = {} } = attributes;
-		const { showDownloadPDF, showPrintPDF, showFullScreen } = options;
+		const globalOpts = passedGlobalOptions || this.targetWindow.BPLG_DATA?.globalViewerOptions || this.targetWindow.PEB_BLOCK_DATA?.globalViewerOptions || {};
+		const forceGlobal = globalOpts.forceGlobal ?? false;
+
+		const showDownloadPDF = forceGlobal ? (globalOpts.showDownloadPDF ?? false) : (options.showDownloadPDF ?? globalOpts.showDownloadPDF ?? false);
+		const showPrintPDF = forceGlobal ? (globalOpts.showPrintPDF ?? false) : (options.showPrintPDF ?? globalOpts.showPrintPDF ?? false);
+		const showFullScreen = forceGlobal ? (globalOpts.showFullScreen ?? true) : (options.showFullScreen ?? globalOpts.showFullScreen ?? true);
 
 		const defaultConfig = { clientId: pebAPIKey };
 		
@@ -49,5 +54,6 @@ class ViewSDKClient {
 
 		return previewFilePromise;
 	}
+
 }
 export default ViewSDKClient;

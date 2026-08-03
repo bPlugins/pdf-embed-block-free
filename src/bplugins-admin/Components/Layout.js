@@ -8,9 +8,9 @@ const navigation = [
 	{ name: 'Demos', href: '/demos' },
 	{ name: 'Pricing', href: '/pricing' },
 	{ name: 'Feature Comparison', href: '/feature-comparison' },
-	{ name: 'Activation', href: '/activation' },
-	{ name: 'Settings', href: '/settings' }
+	{ name: 'Activation', href: '/activation' }
 ];
+
 
 const Layout = (props) => {
 	const { isPremium, hasPro } = props;

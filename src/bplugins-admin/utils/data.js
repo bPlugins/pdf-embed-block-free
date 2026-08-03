@@ -7,7 +7,7 @@ import {
 const slug = 'pdf-embed-block';
 
 export const dashboardInfo = (info) => {
-	const { version, isPremium, hasPro, deleteDataOnUninstall, uninstallNonce, adminUrl = '' } = info;
+	const { version, isPremium, hasPro, deleteDataOnUninstall, uninstallNonce, globalViewerOptions, globalOptionsNonce, adminUrl = '' } = info;
 
 	const proSuffix = isPremium ? ' Pro' : '';
 
@@ -21,7 +21,10 @@ export const dashboardInfo = (info) => {
 		hasPro,
 		deleteDataOnUninstall,
 		uninstallNonce,
+		globalViewerOptions,
+		globalOptionsNonce,
 		adminUrl,
+
 		displayOurPlugins: true,
 		media: {
 			logo: `https://ps.w.org/${slug}/assets/icon-128x128.png`,
@@ -235,6 +238,16 @@ export const welcomeInfo = (adminUrl) => ({
 	changelogs: [
 		{
 			type: 'new',
+			version: '1.3.3 - 03 Aug, 2026',
+			list: [
+				'Added: Global PDF Viewer Settings Profile to set default Download, Print, and Fullscreen options site-wide.',
+				'Added: Dedicated Settings submenu page under PDF Embeds menu in WP Admin.',
+				'Improved: Unlocked Download PDF, Print PDF, and Fullscreen Mode options for all free users.'
+			]
+		},
+
+		{
+			type: 'new',
 			version: '1.3.2 - 13 Jul, 2026',
 			list: [
 				'Added: Elementor getting started instructions.'
@@ -260,17 +273,19 @@ export const welcomeInfo = (adminUrl) => ({
 			]
 		}
 	],
-	changelogsLimit: 5,
+	changelogsLimit: 3,
 	changelogsReadMoreLabel: 'View More Changelogs',
 	proFeatures: [
-		'Multiple Document Viewer Blocks',
-		'Advanced Viewer Controls',
-		'Enhanced Layout Customization',
-		'More Display Styles',
-		'Better Presentation Options',
-		'Enhanced File Compatibility & Rendering',
-		'Professional Presentation & Slide Viewing'
+		'14+ Dedicated Document Viewer Blocks',
+		'Interactive 3D Flipbook Viewer with Page-Turn Animation',
+		'Sleek, Native & Mozilla PDF.js Viewers',
+		'Word, Excel & PowerPoint Document Viewers',
+		'Google Docs, Sheets & Slides Embedders',
+		'Custom Container Padding, Margin, Border & Box Shadow Controls',
+		'Lightbox Modal & Full-Window View Modes'
 	]
+
+
 })
 
 
