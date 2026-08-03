@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
 					</h1>
 				</div>
 				<div style={{ maxWidth: '840px' }}>
-					<Settings {...info} />
+					<Settings {...info} isDedicatedPage={true} />
 				</div>
 			</div>
 		);
 		settingsEl.removeAttribute('data-info');
 	}
-});
+});

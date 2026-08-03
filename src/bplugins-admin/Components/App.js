@@ -42,7 +42,8 @@ const App = (props) => {
 
 				{!isPremium && <Route path='feature-comparison' element={<FeatureCompare plans={['free', 'pro']} {...props} />} />}
 
-				<Route path='settings' element={<Settings {...props} />} />
+				<Route path='settings' element={<Settings {...props} isHelpDemosPage={true} />} />
+
 
 				{hasPro && <Route path='activation' element={<Activation {...props} />} />}
 

@@ -2,7 +2,14 @@ import { useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import useWPAjax from '../../../../bpl-tools/hooks/useWPAjax';
 
-const Settings = ({ deleteDataOnUninstall, uninstallNonce, globalViewerOptions = {}, globalOptionsNonce }) => {
+const Settings = ({
+    deleteDataOnUninstall,
+    uninstallNonce,
+    globalViewerOptions = {},
+    globalOptionsNonce,
+    isDedicatedPage = false,
+    isHelpDemosPage = false
+}) => {
     // Uninstall Data Setting state
     const [enabledUninstall, setEnabledUninstall] = useState(deleteDataOnUninstall);
     const [uninstallNotice, setUninstallNotice] = useState('');
@@ -82,132 +89,177 @@ const Settings = ({ deleteDataOnUninstall, uninstallNonce, globalViewerOptions =
         saveGlobalOptions({ options: JSON.stringify(updated) });
     };
 
+    // Determine what to render based on page context
+    const showGlobalProfileCard = isDedicatedPage || (!isHelpDemosPage && !isDedicatedPage);
+    const showUninstallCard = isHelpDemosPage || (!isHelpDemosPage && !isDedicatedPage);
+    const showDirectLinkBanner = isHelpDemosPage;
+
     return (
-        <div className='bPlDashboardSettingsWrap'>
-            {/* Global PDF Viewer Settings Profile Card */}
-            <div className='bPlDashboardSettings bPlDashboardCard mb20' style={{ marginBottom: '24px' }}>
-                <h2>{__('Global PDF Viewer Settings Profile', 'pdf-embed-block')}</h2>
+        <div className='bPlDashboardSettingsWrap' style={{ maxWidth: '840px', margin: '0 auto' }}>
 
-                <p>{__('Configure default viewer options that apply to all PDF Embed blocks across your website. Individual PDF blocks will inherit these default settings unless customized.', 'pdf-embed-block')}</p>
+            {/* Direct Link Banner (Shown in Help & Demos -> Settings tab) */}
+            {showDirectLinkBanner && (
+                <div
+                    className='bPlDashboardCard'
+                    style={{
+                        marginBottom: '24px',
+                        background: 'linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%)',
+                        border: '1px solid #bae6fd',
+                        borderRadius: '12px',
+                        padding: '20px 24px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: '16px',
+                        flexWrap: 'wrap'
+                    }}
+                >
 
-                <div className='settingsControlGroup' style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    <div className='settingsControl'>
-                        <label className='toggleControl'>
-                            <input
-                                type='checkbox'
-                                checked={viewerOpts.showDownloadPDF}
-                                onChange={(e) => handleOptionChange('showDownloadPDF', e.target.checked)}
-                                disabled={isGlobalLoading}
-                            />
-                            <span className='toggleSlider' />
-                        </label>
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <span className='toggleLabel' style={{ fontWeight: '600' }}>
+                    <div style={{ flex: 1, minWidth: '260px' }}>
+                        <h3 style={{ margin: '0 0 6px', fontSize: '16px', fontWeight: '700', color: '#0369a1' }}>
+                            {__('Global PDF Viewer Settings Profile', 'pdf-embed-block')}
+                        </h3>
+                        <p style={{ margin: 0, fontSize: '13px', color: '#0c4a6e', lineHeight: '1.4' }}>
+                            {__('Manage global default download, print, and fullscreen options across all PDF embeds from the dedicated Settings page.', 'pdf-embed-block')}
+                        </p>
+                    </div>
+                    <a
+                        href='edit.php?post_type=pdf_embed&page=peb_settings_page'
+                        style={{
+                            height: '38px',
+                            lineHeight: '38px',
+                            padding: '0 18px',
+                            background: '#0284c7',
+                            fontWeight: '600',
+                            fontSize: '13px',
+                            borderRadius: '6px',
+                            color: '#ffffff',
+                            textDecoration: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            whiteSpace: 'nowrap',
+                            boxShadow: '0 2px 4px rgba(2, 132, 199, 0.2)'
+                        }}
+                    >
+                        {__('Open Global Settings Page', 'pdf-embed-block')} →
+                    </a>
+                </div>
+            )}
+
+            {/* Global PDF Viewer Settings Profile Card (Shown ONLY on PDF Embeds -> Settings Submenu Page) */}
+            {showGlobalProfileCard && (
+                <div className='bPlDashboardSettings bPlDashboardCard mb20' style={{ marginBottom: '24px' }}>
+                    <h2>{__('Global PDF Viewer Settings Profile', 'pdf-embed-block')}</h2>
+
+                    <p>{__('Configure default viewer options that apply to all PDF Embed blocks across your website. Individual PDF blocks will inherit these default settings unless customized.', 'pdf-embed-block')}</p>
+
+                    <div className='settingsControlGroup' style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                        <div className='settingsControl'>
+                            <label className='toggleControl'>
+                                <input
+                                    type='checkbox'
+                                    checked={viewerOpts.showDownloadPDF}
+                                    onChange={(e) => handleOptionChange('showDownloadPDF', e.target.checked)}
+                                    disabled={isGlobalLoading}
+                                />
+                                <span className='toggleSlider' />
+                            </label>
+                            <span className='toggleLabel' style={{ fontWeight: '500' }}>
                                 {__('Show Download PDF', 'pdf-embed-block')}
                             </span>
-                            <span style={{ fontSize: '12px', color: '#666', marginTop: '2px' }}>
-                                {__('Default Download option for all PDF embeds across the website.', 'pdf-embed-block')}
-                            </span>
                         </div>
-                    </div>
 
-                    <div className='settingsControl'>
-                        <label className='toggleControl'>
-                            <input
-                                type='checkbox'
-                                checked={viewerOpts.showPrintPDF}
-                                onChange={(e) => handleOptionChange('showPrintPDF', e.target.checked)}
-                                disabled={isGlobalLoading}
-                            />
-                            <span className='toggleSlider' />
-                        </label>
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <span className='toggleLabel' style={{ fontWeight: '600' }}>
+                        <div className='settingsControl'>
+                            <label className='toggleControl'>
+                                <input
+                                    type='checkbox'
+                                    checked={viewerOpts.showPrintPDF}
+                                    onChange={(e) => handleOptionChange('showPrintPDF', e.target.checked)}
+                                    disabled={isGlobalLoading}
+                                />
+                                <span className='toggleSlider' />
+                            </label>
+                            <span className='toggleLabel' style={{ fontWeight: '500' }}>
                                 {__('Show Print PDF', 'pdf-embed-block')}
                             </span>
-                            <span style={{ fontSize: '12px', color: '#666', marginTop: '2px' }}>
-                                {__('Default Print option for all PDF embeds across the website.', 'pdf-embed-block')}
-                            </span>
                         </div>
-                    </div>
 
-                    <div className='settingsControl'>
-                        <label className='toggleControl'>
-                            <input
-                                type='checkbox'
-                                checked={viewerOpts.showFullScreen}
-                                onChange={(e) => handleOptionChange('showFullScreen', e.target.checked)}
-                                disabled={isGlobalLoading}
-                            />
-                            <span className='toggleSlider' />
-                        </label>
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <span className='toggleLabel' style={{ fontWeight: '600' }}>
+                        <div className='settingsControl'>
+                            <label className='toggleControl'>
+                                <input
+                                    type='checkbox'
+                                    checked={viewerOpts.showFullScreen}
+                                    onChange={(e) => handleOptionChange('showFullScreen', e.target.checked)}
+                                    disabled={isGlobalLoading}
+                                />
+                                <span className='toggleSlider' />
+                            </label>
+                            <span className='toggleLabel' style={{ fontWeight: '500' }}>
                                 {__('Show Fullscreen Mode', 'pdf-embed-block')}
                             </span>
-                            <span style={{ fontSize: '12px', color: '#666', marginTop: '2px' }}>
-                                {__('Default Fullscreen Mode option for all PDF embeds across the website.', 'pdf-embed-block')}
-                            </span>
+                        </div>
+
+                        <hr style={{ border: 'none', borderTop: '1px solid #eaeaea', margin: '8px 0' }} />
+
+                        <div className='settingsControl'>
+                            <label className='toggleControl'>
+                                <input
+                                    type='checkbox'
+                                    checked={viewerOpts.forceGlobal}
+                                    onChange={(e) => handleOptionChange('forceGlobal', e.target.checked)}
+                                    disabled={isGlobalLoading}
+                                />
+                                <span className='toggleSlider' />
+                            </label>
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                <span className='toggleLabel' style={{ fontWeight: '600' }}>
+                                    {__('Apply Settings Globally to All PDFs', 'pdf-embed-block')}
+                                </span>
+                                <span style={{ fontSize: '12px', color: '#666', marginTop: '2px' }}>
+                                    {__('Enabling this overrides individual block settings across all posts and pages, applying Print & Download options everywhere at once.', 'pdf-embed-block')}
+                                </span>
+                            </div>
                         </div>
                     </div>
 
-                    <hr style={{ border: 'none', borderTop: '1px solid #eaeaea', margin: '8px 0' }} />
+                    {globalNotice && <div className='settingsNotice success' style={{ marginTop: '16px' }}>{globalNotice}</div>}
+                </div>
+            )}
+
+            {/* Uninstall Card (Shown in Help & Demos -> Settings Tab) */}
+            {showUninstallCard && (
+                <div className='bPlDashboardSettings bPlDashboardCard'>
+                    <h2>{__('Delete Data on Uninstall', 'pdf-embed-block')}</h2>
+
+                    <p>{__('When enabled, all plugin data will be permanently deleted when you uninstall (delete) the plugin. This includes:', 'pdf-embed-block')}</p>
+
+                    <ul>
+                        <li>{__('All PDF Embed posts (pdf_embed post type)', 'pdf-embed-block')}</li>
+                        <li>{__('All plugin settings and options', 'pdf-embed-block')}</li>
+                    </ul>
+
+                    <p className='settingsWarning'>
+                        {__('⚠️ This action cannot be undone. Your data will be safe if you only deactivate the plugin.', 'pdf-embed-block')}
+                    </p>
 
                     <div className='settingsControl'>
                         <label className='toggleControl'>
-                            <input
-                                type='checkbox'
-                                checked={viewerOpts.forceGlobal}
-                                onChange={(e) => handleOptionChange('forceGlobal', e.target.checked)}
-                                disabled={isGlobalLoading}
-                            />
+                            <input type='checkbox' checked={enabledUninstall} onChange={handleUninstallToggle} disabled={isUninstallLoading} />
                             <span className='toggleSlider' />
                         </label>
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <span className='toggleLabel' style={{ fontWeight: '600' }}>
-                                {__('Apply Settings Globally to All PDFs', 'pdf-embed-block')}
-                            </span>
-                            <span style={{ fontSize: '12px', color: '#666', marginTop: '2px' }}>
-                                {__('Enabling this overrides individual block settings across all posts and pages, applying Print & Download options everywhere at once.', 'pdf-embed-block')}
-                            </span>
-                        </div>
+
+                        <span className='toggleLabel'>
+                            {enabledUninstall
+                                ? __('Data will be deleted on uninstall', 'pdf-embed-block')
+                                : __('Data will be preserved on uninstall', 'pdf-embed-block')
+                            }
+                        </span>
                     </div>
+
+                    {uninstallNotice && <div className={`settingsNotice ${enabledUninstall ? 'warning' : 'success'}`}>{uninstallNotice}</div>}
                 </div>
-
-                {globalNotice && <div className='settingsNotice success' style={{ marginTop: '16px' }}>{globalNotice}</div>}
-            </div>
-
-            {/* Uninstall Card */}
-            <div className='bPlDashboardSettings bPlDashboardCard'>
-                <h2>{__('Delete Data on Uninstall', 'pdf-embed-block')}</h2>
-
-                <p>{__('When enabled, all plugin data will be permanently deleted when you uninstall (delete) the plugin. This includes:', 'pdf-embed-block')}</p>
-
-                <ul>
-                    <li>{__('All PDF Embed posts (pdf_embed post type)', 'pdf-embed-block')}</li>
-                    <li>{__('All plugin settings and options', 'pdf-embed-block')}</li>
-                </ul>
-
-                <p className='settingsWarning'>
-                    {__('⚠️ This action cannot be undone. Your data will be safe if you only deactivate the plugin.', 'pdf-embed-block')}
-                </p>
-
-                <div className='settingsControl'>
-                    <label className='toggleControl'>
-                        <input type='checkbox' checked={enabledUninstall} onChange={handleUninstallToggle} disabled={isUninstallLoading} />
-                        <span className='toggleSlider' />
-                    </label>
-
-                    <span className='toggleLabel'>
-                        {enabledUninstall
-                            ? __('Data will be deleted on uninstall', 'pdf-embed-block')
-                            : __('Data will be preserved on uninstall', 'pdf-embed-block')
-                        }
-                    </span>
-                </div>
-
-                {uninstallNotice && <div className={`settingsNotice ${enabledUninstall ? 'warning' : 'success'}`}>{uninstallNotice}</div>}
-            </div>
+            )}
         </div>
     );
 };

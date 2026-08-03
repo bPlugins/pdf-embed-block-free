@@ -9,10 +9,8 @@ import SettingsSaveForm from './SettingsSaveForm';
 import { embedModes } from './utils/options';
 import { AdvertiseCard } from '../../../bpl-tools/ProControls';
 import PDFFileSelector from './components/PDFFileSelector';
-import AlignToolbar from './components/AlignToolbar';
 
-
-const Settings = ({ attributes, setAttributes, data, dataLoading, saveData, isLoading, siteUrl, isPremium }) => {
+const Settings = ({ attributes, setAttributes, data, dataLoading, saveData, isLoading, siteUrl }) => {
 	const { config, options = {}, width, height } = attributes || {};
 	const { embedMode = '' } = config;
 
@@ -83,9 +81,8 @@ const Settings = ({ attributes, setAttributes, data, dataLoading, saveData, isLo
 			<AdvertiseCard planLink={pricingURL || 'https://bplugins.com/products/pdf-embed-block/pricing'} />
 
 		</InspectorControls>
-
-		<AlignToolbar {...{ attributes, setAttributes, isPremium }} />
 	</>;
+
 };
 
 export default compose(

@@ -11,6 +11,8 @@ import Settings from './Settings';
 import { withSelect } from '@wordpress/data';
 import ShortCode from './components/ShortCode/ShortCode';
 
+import { useBlockProps } from '@wordpress/block-editor';
+import AlignToolbar from './components/AlignToolbar';
 import ApiKeyPlaceholder from './ApiKeyPlaceholder';
 
 const Edit = props => {
@@ -45,72 +47,79 @@ const Edit = props => {
 		}
 	}, [apiKey, file, config?.embedMode, options, containerRef.current]);
 
+	const blockProps = useBlockProps({
+		className,
+		id: `pebPDFEmbed_${clientId.replace(/-/g, '_')}`,
+		style: {
+			position: 'relative',
+			minHeight: file?.url ? (attributes.height || '469px') : 'auto',
+			width: '100%'
+		},
+		onClick: () => {
+			if (window.wp && window.wp.data) {
+				window.wp.data.dispatch('core/block-editor').selectBlock(clientId);
+			}
+		}
+	});
+
 	// Check if Adobe API loaded
 	if (dataLoading || isLoading) {
 		return <div className='pebSpinnerContainer'><Spinner /> {__(' Loading', 'pdf-embed-block')}</div>
 	}
 
-	return <>
-		<Settings {...{ attributes, setAttributes, dataLoading, saveData, isLoading, data: apiKey, isPremium }} />
+	return (
+		<div {...blockProps}>
+			<AlignToolbar {...{ attributes, setAttributes, isPremium }} />
 
-		{CPTType === "pdf_embed" && <ShortCode {...{ shortcode }} />}
+			<Settings {...{ attributes, setAttributes, dataLoading, saveData, isLoading, data: apiKey, isPremium }} />
 
-		{!apiKey ? (
-			<ApiKeyPlaceholder data={apiKey} saveData={saveData} isLoading={isLoading} />
-		) :
+			{CPTType === "pdf_embed" && <ShortCode {...{ shortcode }} />}
 
+			{!apiKey ? (
+				<ApiKeyPlaceholder data={apiKey} saveData={saveData} isLoading={isLoading} />
+			) : file?.url ? (
+				<>
+					<Style attributes={attributes} clientId={clientId.replace(/-/g, '_')} />
 
-			file?.url ? <div
-				className={className}
-				id={`pebPDFEmbed_${clientId.replace(/-/g, '_')}`}
-				style={{
-					position: 'relative',
-					minHeight: attributes.height || '469px',
-					width: '100%'
-				}}
-				onClick={() => {
-					if (window.wp && window.wp.data) {
-						window.wp.data.dispatch('core/block-editor').selectBlock(clientId);
-					}
-				}}
-			>
-				<Style attributes={attributes} clientId={clientId.replace(/-/g, '_')} />
+					<div
+						className="bPlBlockBeforeSelect"
+						style={{
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							width: '100%',
+							height: '100%',
+							zIndex: 99999,
+							cursor: 'pointer',
+							background: 'transparent'
+						}}
+						onClick={(e) => {
+							e.preventDefault();
+							e.stopPropagation();
+							if (window.wp && window.wp.data) {
+								window.wp.data.dispatch('core/block-editor').selectBlock(clientId);
+							}
+						}}
+					></div>
 
-				<div
-					className="bPlBlockBeforeSelect"
-					style={{
-						position: 'absolute',
-						top: 0,
-						left: 0,
-						width: '100%',
-						height: '100%',
-						zIndex: 99999,
-						cursor: 'pointer',
-						background: 'transparent'
-					}}
-					onClick={(e) => {
-						e.preventDefault();
-						e.stopPropagation();
-						if (window.wp && window.wp.data) {
-							window.wp.data.dispatch('core/block-editor').selectBlock(clientId);
-						}
-					}}
-				></div>
-
-				<div className='pebPDFEmbed' ref={containerRef}>
-					{config?.embedMode === 'SIZED_CONTAINER' && <div className='pebSizedContainer' id={`pebPDFArea_${clientId.replace(/-/g, '_')}`}></div>}
-					{config?.embedMode === 'IN_LINE' && <div className='pebInLine' id={`pebPDFArea_${clientId.replace(/-/g, '_')}`}></div>}
-					{config?.embedMode === 'LIGHTBOX' && <div className='pebLightbox' id={`pebPDFArea_${clientId.replace(/-/g, '_')}`}></div>}
-					{config?.embedMode === 'FULL_WINDOW' && <div className='pebFullWindow' id={`pebPDFArea_${clientId.replace(/-/g, '_')}`}></div>}
-				</div>
-			</div> : <MediaPlaceholder
-				type='application/pdf'
-				typeName='PDF'
-				icon='pdf'
-				onChange={val => setAttributes({ file: val })}
-				placeholder={__('Paste or type a PDF URL', 'pdf-embed-block')}
-			/>}
-	</>;
+					<div className='pebPDFEmbed' ref={containerRef}>
+						{config?.embedMode === 'SIZED_CONTAINER' && <div className='pebSizedContainer' id={`pebPDFArea_${clientId.replace(/-/g, '_')}`}></div>}
+						{config?.embedMode === 'IN_LINE' && <div className='pebInLine' id={`pebPDFArea_${clientId.replace(/-/g, '_')}`}></div>}
+						{config?.embedMode === 'LIGHTBOX' && <div className='pebLightbox' id={`pebPDFArea_${clientId.replace(/-/g, '_')}`}></div>}
+						{config?.embedMode === 'FULL_WINDOW' && <div className='pebFullWindow' id={`pebPDFArea_${clientId.replace(/-/g, '_')}`}></div>}
+					</div>
+				</>
+			) : (
+				<MediaPlaceholder
+					type='application/pdf'
+					typeName='PDF'
+					icon='pdf'
+					onChange={val => setAttributes({ file: val })}
+					placeholder={__('Paste or type a PDF URL', 'pdf-embed-block')}
+				/>
+			)}
+		</div>
+	);
 };
 
 

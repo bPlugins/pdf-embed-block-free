@@ -1,5 +1,4 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-
 import Header from '../../../../bpl-tools/Admin/Header';
 
 const navigation = [
@@ -8,13 +7,12 @@ const navigation = [
 	{ name: 'Demos', href: '/demos' },
 	{ name: 'Pricing', href: '/pricing' },
 	{ name: 'Feature Comparison', href: '/feature-comparison' },
+	{ name: 'Settings', href: '/settings' },
 	{ name: 'Activation', href: '/activation' }
 ];
 
-
 const Layout = (props) => {
 	const { isPremium, hasPro } = props;
-
 	const location = useLocation();
 
 	return <div className='bPlDashboard'>
