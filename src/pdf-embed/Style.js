@@ -4,32 +4,45 @@ const Style = ({ attributes, clientId }) => {
 	const { alignment, width, height, padding = {}, margin = {}, border = {}, shadow = [] } = attributes || {};
 
 	const cleanId = typeof clientId === 'string' ? clientId.replace(/-/g, '_') : clientId;
-	const pdfEmbedSl = `#pebPDFEmbed_${cleanId} .pebPDFEmbed`;
-	const sizedContainerSl = `${pdfEmbedSl} .pebSizedContainer`;
-	const inLineSl = `${pdfEmbedSl} .pebInLine`;
-	const areaIdSl = `#pebPDFArea_${cleanId}`;
+	const pdfEmbedSl = `#pebPDFEmbed_${cleanId} .pebPDFEmbed, #pebPDFEmbed-${clientId} .pebPDFEmbed, .pebPDFEmbed`;
+	const sizedContainerSl = `${pdfEmbedSl} .pebSizedContainer, .pebSizedContainer`;
+	const areaIdSl = `#pebPDFArea_${cleanId}, #pebPDFArea-${clientId}`;
+	const inLineSl = `${pdfEmbedSl} .pebInLine, .pebInLine`;
+
+	const finalHeight = (height && !['0px', '0vh', '0em', '0', 0].includes(height)) ? height : '469px';
+	const finalWidth = (width && !['0px', '0%', '0em', '0', 0].includes(width)) ? width : '100%';
+
+	const alignMargin = alignment === 'center' ? '0 auto !important' : alignment === 'right' ? '0 0 0 auto !important' : '0 auto 0 0 !important';
+	const alignFlexItems = alignment === 'center' ? 'center' : alignment === 'right' ? 'flex-end' : 'flex-start';
+	const alignTextAlign = alignment || 'center';
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
 		
 			${pdfEmbedSl}{
-				text-align: ${alignment};
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: ${alignFlexItems} !important;
+				text-align: ${alignTextAlign};
 				padding: ${getSpaceCSS(padding)};
 				margin: ${getSpaceCSS(margin)};
 				box-shadow: ${getMultiShadowCSS(shadow)};
-				min-height: ${['0px', '0vh', '0em'].includes(height) ? '469px' : (height || '469px')};
+				min-height: ${finalHeight};
+				width: 100%;
 				${getBorderCSS(border)}
 			}
 
 			${sizedContainerSl},
 			${areaIdSl}{
-				width: ${['0px', '0%', '0em'].includes(width) ? 'auto' : (width || '100%')};
-				height: ${['0px', '0vh', '0em'].includes(height) ? '469px' : (height || '469px')};
-				min-height: ${['0px', '0vh', '0em'].includes(height) ? '469px' : (height || '469px')};
+				width: ${finalWidth};
+				height: ${finalHeight};
+				min-height: ${finalHeight};
+				margin: ${alignMargin};
 			}
 
 			${inLineSl}{
-				width: ${['0px', '0%', '0em'].includes(width) ? 'auto' : width};
+				width: ${finalWidth};
+				margin: ${alignMargin};
 			}
 
 	`}} />;

@@ -7,7 +7,7 @@ if( !class_exists( 'PEB_PDFEmbed' ) ){
         function __construct(){
             $this -> loaded_classes();
         }
- 
+
         function loaded_classes(){
 			require_once PEB_DIR_PATH . 'includes/AdminMenu.php';
 			require_once PEB_DIR_PATH . 'includes/CustomColumn.php';
@@ -23,7 +23,7 @@ if( !class_exists( 'PEB_PDFEmbed' ) ){
 			new PEB\CustomColumn();
 			new PEB\RestAPI();
 		}
-        
+
     }
     new PEB_PDFEmbed();
 }
@@ -42,4 +42,4 @@ if ( ! function_exists( 'pebGetGlobalViewerOptions' ) ) {
 		}
 		return array_merge( $defaults, $saved );
 	}
-}
+}

@@ -7,13 +7,12 @@ import Style from './Style';
 import ViewSDKClient from './ViewSDKClient';
 import useWPOptionQuery from './hooks/useWPOptionQuery';
 import useWPOptionMutation from './hooks/useWPOptionMutation';
+import { useBlockProps } from '@wordpress/block-editor';
 import Settings from './Settings';
 import { withSelect } from '@wordpress/data';
 import ShortCode from './components/ShortCode/ShortCode';
-
-import { useBlockProps } from '@wordpress/block-editor';
-import AlignToolbar from './components/AlignToolbar';
 import ApiKeyPlaceholder from './ApiKeyPlaceholder';
+import AlignToolbar from './components/AlignToolbar';
 
 const Edit = props => {
 	const { className, attributes, setAttributes, clientId, isSelected, currentPostId, CPTType } = props;
@@ -23,7 +22,7 @@ const Edit = props => {
 	const { data: apiKey, isLoading: dataLoading } = useWPOptionQuery('pebAPIKey', status);
 	const { saveData, isLoading } = useWPOptionMutation('pebAPIKey', { type: 'string' }, setStatus);
 
-	const { isPremium } = false;
+	const isPremium = false;
 
 	const shortcode = `[pdf_embed id=${currentPostId}]`;
 
@@ -69,7 +68,7 @@ const Edit = props => {
 
 	return (
 		<div {...blockProps}>
-			<AlignToolbar {...{ attributes, setAttributes, isPremium }} />
+			<AlignToolbar {...{ attributes, setAttributes }} />
 
 			<Settings {...{ attributes, setAttributes, dataLoading, saveData, isLoading, data: apiKey, isPremium }} />
 
@@ -120,6 +119,7 @@ const Edit = props => {
 			)}
 		</div>
 	);
+
 };
 
 

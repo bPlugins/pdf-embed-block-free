@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class RestAPI {
-    	public function __construct() {
+    public function __construct() {
 		add_action( 'wp_ajax_pebSaveUninstallOption', [ $this, 'peb_save_uninstall_option' ] );
 		add_action( 'wp_ajax_pebSaveGlobalViewerOptions', [ $this, 'peb_save_global_viewer_options' ] );
 	}
@@ -48,7 +48,8 @@ class RestAPI {
 			wp_send_json_error( array( 'message' => __( 'You do not have permission to manage options.', 'pdf-embed-block' ) ) );
 		}
 
-		$options_raw = isset( $_POST['options'] ) ? wp_unslash( $_POST['options'] ) : array();
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- $_POST['options'] is a JSON string, sanitized after json_decode.
+		$options_raw = isset( $_POST['options'] ) ? wp_unslash( $_POST['options'] ) : '';
 		if ( is_string( $options_raw ) ) {
 			$options_raw = json_decode( $options_raw, true );
 		}
@@ -68,4 +69,4 @@ class RestAPI {
 		) );
 	}
 
-}
+}
