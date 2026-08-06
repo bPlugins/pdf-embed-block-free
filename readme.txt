@@ -152,7 +152,7 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
-= 1.3.3 - 04 Aug, 2026 =
+= 1.3.3 - 06 Aug, 2026 =
 * **Added:** Global PDF Viewer Settings Profile to configure default Download, Print, and Fullscreen options site-wide.
 * **Added:** Dedicated Settings submenu page under the PDF Embeds menu in WP Admin.
 * **Improved:** Unlocked Show Download PDF, Show Print PDF, and Show Fullscreen Mode options for all free users.

@@ -238,7 +238,7 @@ export const welcomeInfo = (adminUrl) => ({
 	changelogs: [
 		{
 			type: 'new',
-			version: '1.3.3 - 04 Aug, 2026',
+			version: '1.3.3 - 06 Aug, 2026',
 			list: [
 				'Added: Global PDF Viewer Settings Profile to set default Download, Print, and Fullscreen options site-wide.',
 				'Added: Dedicated Settings submenu page under PDF Embeds menu in WP Admin.',

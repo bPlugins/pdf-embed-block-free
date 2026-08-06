@@ -92,18 +92,20 @@ const Settings = ({
     const showUninstallCard = true;
 
     return (
-        <div className='bPlDashboardContainer bPlDashboardSettingsWrap' style={{ maxWidth: '1320px', width: '100%', margin: '0 auto' }}>
+        <div className='bPlDashboardContainer bPlDashboardSettingsWrap' style={{ maxWidth: '850px', width: '100%', margin: '0 auto', boxSizing: 'border-box' }}>
             <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+                display: 'flex',
+                flexDirection: 'column',
                 gap: '24px',
-                alignItems: 'stretch'
+                width: '100%'
             }}>
                 {/* Global PDF Viewer Settings Profile Card */}
                 {showGlobalProfileCard && (
                     <div
-                        className='bPlDashboardSettings bPlDashboardCard'
+                        className='bPlDashboardCard'
                         style={{
+                            width: '100%',
+                            boxSizing: 'border-box',
                             padding: '24px',
                             background: '#ffffff',
                             border: '1px solid #e2e8f0',
@@ -281,8 +283,10 @@ const Settings = ({
                 {/* Uninstall Card */}
                 {showUninstallCard && (
                     <div
-                        className='bPlDashboardSettings bPlDashboardCard'
+                        className='bPlDashboardCard'
                         style={{
+                            width: '100%',
+                            boxSizing: 'border-box',
                             padding: '24px',
                             background: '#ffffff',
                             border: '1px solid #e2e8f0',
