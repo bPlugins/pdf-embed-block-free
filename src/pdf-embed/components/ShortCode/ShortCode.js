@@ -1,61 +1,34 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from "@wordpress/element";
+import { useCopyToClipboard } from "@wordpress/compose";
 import "./shortcode.scss";
 
 const ShortCode = ({ shortcode }) => {
     const tooltip = useRef(null);
-    const inputRef = useRef(null);
     const [copied, setCopied] = useState(false);
 
-    const handleCopy = (e) => {
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
+    const feedback = () => {
+        setCopied(true);
+
+        if (tooltip.current) {
+            tooltip.current.innerHTML = "Copied Successfully!";
+            tooltip.current.classList.add("copied");
         }
 
-        if (inputRef.current) {
-            inputRef.current.select();
-            inputRef.current.setSelectionRange(0, 99999);
-        }
-
-        const feedback = () => {
-            setCopied(true);
+        setTimeout(() => {
+            setCopied(false);
 
             if (tooltip.current) {
-                tooltip.current.innerHTML = "Copied Successfully!";
-                tooltip.current.classList.add("copied");
+                tooltip.current.innerHTML = "Copy To Clipboard";
+                tooltip.current.classList.remove("copied");
             }
+        }, 1500);
+    };
 
-            setTimeout(() => {
-                setCopied(false);
+    const copyRef = useCopyToClipboard(shortcode, feedback);
 
-                if (tooltip.current) {
-                    tooltip.current.innerHTML = "Copy To Clipboard";
-                    tooltip.current.classList.remove("copied");
-                }
-            }, 1500);
-        };
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard
-                .writeText(shortcode)
-                .then(() => {
-                    feedback();
-                })
-                .catch((err) => {
-                    console.error("Clipboard API failed, trying fallback", err);
-                    fallbackCopy();
-                });
-        } else {
-            fallbackCopy();
-        }
-
-        function fallbackCopy() {
-            try {
-                document.execCommand("copy");
-                feedback();
-            } catch (err) {
-                console.error("Fallback copy failed", err);
-            }
+    const handleInputClick = (e) => {
+        if (e && e.target) {
+            e.target.select();
         }
     };
 
@@ -69,14 +42,14 @@ const ShortCode = ({ shortcode }) => {
 
                     <div className="pdfEmbedShortCodeInput">
                         <input
-                            ref={inputRef}
+                            ref={copyRef}
                             readOnly
                             value={shortcode}
-                            onClick={handleCopy}
+                            onClick={handleInputClick}
                         />
                     </div>
 
-                    <div className="pdfEmbedShortCodeCopyBtn" onClick={handleCopy}>
+                    <div ref={copyRef} className="pdfEmbedShortCodeCopyBtn">
                         {copied ? (
                             "✓"
                         ) : (

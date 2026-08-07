@@ -18,11 +18,9 @@ const SettingsSaveForm = ({ data, dataLoading, saveData, isLoading }) => {
 			<Label className='mb5'>{__('Adobe API Key (Client ID):', 'pdf-embed-block')}</Label>
 
 			<PanelRow className='bplUrlInput'>
-				<TextControl value={key} onChange={val => setKey(val)} />
+				<TextControl __nextHasNoMarginBottom value={key} onChange={val => setKey(val)} />
 
 				<Button className='saveSettings' onClick={() => saveData(key)} disabled={isLoading}>{__('Save', 'pdf-embed-block')}</Button>
-
-
 			</PanelRow>
 			<small className="helpText">
 				{__('Get a free API Key from ')}

@@ -6,6 +6,7 @@ import { debounce } from "../../../../bpl-tools/utils/functions";
 
 const PDFFileSelector = ({ attributes, setAttributes, pdfType = "embed" }) => {
     const { file = {} } = attributes || {};
+    const hasFile = Boolean(file?.url);
 
     const [title, setTitle] = useState(file.title);
 
@@ -26,7 +27,7 @@ const PDFFileSelector = ({ attributes, setAttributes, pdfType = "embed" }) => {
                 placeholder={__('Enter PDF URL', 'pdf-embed-block')}
             />
 
-            {["embed"].includes(pdfType) && <>
+            {hasFile && ["embed"].includes(pdfType) && <>
                 <Label className='mt10'>{__('PDF File Name:', 'pdf-embed-block')}</Label>
                 <TextControl value={title} onChange={val => {
                     setTitle(val);

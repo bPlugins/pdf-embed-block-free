@@ -67,12 +67,13 @@ const Edit = props => {
 	}
 
 	return (
-		<div {...blockProps}>
-			<AlignToolbar {...{ attributes, setAttributes }} />
-
-			<Settings {...{ attributes, setAttributes, dataLoading, saveData, isLoading, data: apiKey, isPremium }} />
-
+		<>
 			{CPTType === "pdf_embed" && <ShortCode {...{ shortcode }} />}
+
+			<div {...blockProps}>
+				<AlignToolbar {...{ attributes, setAttributes }} />
+
+				<Settings {...{ attributes, setAttributes, dataLoading, saveData, isLoading, data: apiKey, isPremium }} />
 
 			{!apiKey ? (
 				<ApiKeyPlaceholder data={apiKey} saveData={saveData} isLoading={isLoading} />
@@ -118,6 +119,7 @@ const Edit = props => {
 				/>
 			)}
 		</div>
+	</>
 	);
 
 };

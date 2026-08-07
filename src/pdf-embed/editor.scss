@@ -2,8 +2,82 @@ $primaryColor: #4527a4;
 
 .bplMediaPlaceholder {
 	.bplUrlInput {
+		display: flex !important;
+		align-items: stretch !important;
+		justify-content: flex-start !important;
+		gap: 0 !important;
+		margin-top: 6px;
+		margin-bottom: 8px;
+
+		&,
+		*,
+		.components-base-control,
+		.components-base-control__field,
+		.components-text-control__input,
+		.saveSettings {
+			border-radius: 0 !important;
+		}
+
+		.components-base-control {
+			flex: 1 !important;
+			margin-bottom: 0 !important;
+		}
+
+		.components-base-control__field {
+			margin-bottom: 0 !important;
+			height: 100% !important;
+		}
+
 		.components-text-control__input {
-			width: 200px !important;
+			width: 100% !important;
+			height: 36px !important;
+			min-height: 36px !important;
+			box-sizing: border-box !important;
+			border: 1px solid #cbd5e1 !important;
+			border-right: none !important;
+			padding: 0 10px !important;
+			font-size: 13px !important;
+			background-color: #ffffff !important;
+			color: #0f172a !important;
+			box-shadow: none !important;
+
+			&:focus {
+				border-color: #146ef5 !important;
+				box-shadow: 0 0 0 1px #146ef5 !important;
+				z-index: 2;
+			}
+		}
+
+		.saveSettings {
+			height: 36px !important;
+			min-height: 36px !important;
+			box-sizing: border-box !important;
+			width: auto !important;
+			margin: 0 !important;
+			background-color: #146EF5 !important;
+			color: #ffffff !important;
+			font-weight: 600 !important;
+			font-size: 13px !important;
+			padding: 0 16px !important;
+			border: 1px solid #146EF5 !important;
+			cursor: pointer;
+			display: inline-flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			line-height: 1 !important;
+			white-space: nowrap !important;
+			transition: background-color 0.2s;
+
+			&:hover {
+				background-color: #0d59c8 !important;
+				border-color: #0d59c8 !important;
+			}
+
+			&:disabled,
+			&[disabled] {
+				opacity: 0.65 !important;
+				cursor: not-allowed !important;
+			}
 		}
 	}
 }
@@ -76,14 +150,16 @@ $primaryColor: #4527a4;
 .saveSettings {
 	background-color: #146EF5 !important;
 	color: #fff !important;
+	border-radius: 0px !important;
 	cursor: pointer;
 	border: none;
-	width: 35px;
-	height: 40px;
-	border-radius: 0 2px 2px 0;
-	display: flex;
+	height: 36px !important;
+	min-height: 36px !important;
+	box-sizing: border-box !important;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	padding: 0 16px;
 }
 
 // PDF Embed
