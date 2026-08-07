@@ -1,7 +1,8 @@
 import { getBorderCSS, getMultiShadowCSS, getSpaceCSS } from "../../../bpl-tools/utils/getCSS";
 
 const Style = ({ attributes, clientId }) => {
-	const { alignment, width, height, padding = {}, margin = {}, border = {}, shadow = [] } = attributes || {};
+	const { alignment, width, height, padding = {}, margin = {}, border = {}, shadow = [], config = {} } = attributes || {};
+	const embedMode = config?.embedMode || 'SIZED_CONTAINER';
 
 	const cleanId = typeof clientId === 'string' ? clientId.replace(/-/g, '_') : clientId;
 	const pdfEmbedSl = `#pebPDFEmbed_${cleanId} .pebPDFEmbed, #pebPDFEmbed-${clientId} .pebPDFEmbed, .pebPDFEmbed`;
@@ -16,6 +17,8 @@ const Style = ({ attributes, clientId }) => {
 	const alignFlexItems = alignment === 'center' ? 'center' : alignment === 'right' ? 'flex-end' : 'flex-start';
 	const alignTextAlign = alignment || 'center';
 
+	const isSizedContainer = embedMode === 'SIZED_CONTAINER';
+
 	return <style dangerouslySetInnerHTML={{
 		__html: `
 		
@@ -27,21 +30,22 @@ const Style = ({ attributes, clientId }) => {
 				padding: ${getSpaceCSS(padding)};
 				margin: ${getSpaceCSS(margin)};
 				box-shadow: ${getMultiShadowCSS(shadow)};
-				min-height: ${finalHeight};
+				${isSizedContainer ? `min-height: ${finalHeight};` : 'min-height: auto;'}
 				width: 100%;
 				${getBorderCSS(border)}
 			}
 
-			${sizedContainerSl},
-			${areaIdSl}{
+			${sizedContainerSl}${isSizedContainer ? `, ${areaIdSl}` : ''}{
 				width: ${finalWidth};
 				height: ${finalHeight};
 				min-height: ${finalHeight};
 				margin: ${alignMargin};
 			}
 
-			${inLineSl}{
+			${inLineSl}${!isSizedContainer && embedMode === 'IN_LINE' ? `, ${areaIdSl}` : ''}{
 				width: ${finalWidth};
+				height: auto;
+				min-height: auto;
 				margin: ${alignMargin};
 			}
 

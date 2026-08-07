@@ -6,13 +6,16 @@ const ShortCode = ({ shortcode }) => {
     const inputRef = useRef(null);
     const [copied, setCopied] = useState(false);
 
-    const handleCopy = async (e) => {
+    const handleCopy = (e) => {
         if (e) {
             e.preventDefault();
             e.stopPropagation();
         }
 
-        const textToCopy = shortcode || (inputRef.current ? inputRef.current.value : "");
+        if (inputRef.current) {
+            inputRef.current.select();
+            inputRef.current.setSelectionRange(0, 99999);
+        }
 
         const feedback = () => {
             setCopied(true);
@@ -32,47 +35,27 @@ const ShortCode = ({ shortcode }) => {
             }, 1500);
         };
 
-        if (inputRef.current) {
-            try {
-                inputRef.current.focus();
-                inputRef.current.select();
-                inputRef.current.setSelectionRange(0, 99999);
-            } catch (err) {
-                // Ignore focus error
-            }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+                .writeText(shortcode)
+                .then(() => {
+                    feedback();
+                })
+                .catch((err) => {
+                    console.error("Clipboard API failed, trying fallback", err);
+                    fallbackCopy();
+                });
+        } else {
+            fallbackCopy();
         }
 
-        let success = false;
-        if (navigator && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        function fallbackCopy() {
             try {
-                await navigator.clipboard.writeText(textToCopy);
-                success = true;
+                document.execCommand("copy");
+                feedback();
             } catch (err) {
-                console.warn("navigator.clipboard.writeText failed:", err);
+                console.error("Fallback copy failed", err);
             }
-        }
-
-        if (!success) {
-            try {
-                const el = document.createElement("textarea");
-                el.value = textToCopy;
-                el.setAttribute("readonly", "");
-                el.style.position = "fixed";
-                el.style.left = "-9999px";
-                el.style.top = "-9999px";
-                document.body.appendChild(el);
-                el.focus();
-                el.select();
-                el.setSelectionRange(0, 99999);
-                success = document.execCommand("copy");
-                document.body.removeChild(el);
-            } catch (err) {
-                console.error("execCommand fallback failed:", err);
-            }
-        }
-
-        if (success) {
-            feedback();
         }
     };
 
