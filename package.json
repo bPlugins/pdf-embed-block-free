@@ -1,6 +1,6 @@
 {
 	"name": "pdf-embed-block",
-	"version": "1.3.3",
+	"version": "1.3.4",
 	"description": "Show PDF file on your web page",
 	"main": "index.js",
 	"author": "Md. Shamim Islam",
@@ -13,7 +13,7 @@
 		"lint:js": "wp-scripts lint-js",
 		"format": "wp-scripts format",
 		"build": "wp-scripts build --webpack-copy-php",
-		"i18n-pot": "wp i18n make-pot . languages/pdf-embed-block.pot --exclude=\"src\" && cp ./languages/pdf-embed-block.pot ./languages/pdf-embed-block-en_US.po",
+		"i18n-pot": "wp i18n make-pot . languages/pdf-embed-block.pot --exclude=\"node_modules,build,vendor,bin,zip,brand,assets\"",
 		"i18n-json": "wp i18n make-json languages/ --no-purge",
 		"i18n-mo": "wp i18n make-mo languages/",
 		"i18n": "npm run i18n-pot && npm run i18n-json && npm run i18n-mo",

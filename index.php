@@ -3,7 +3,7 @@
  * Plugin Name: PDF Embed Block – share documents right inside your posts
  * Plugin URI: https://bplugins.com/products/pdf-embed-block
  * Description: Embed PDF files easily in your pages and posts.
- * Version: 1.3.3
+ * Version: 1.3.4
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( function_exists( 'peb_fs' ) ) {
     peb_fs()->set_basename( true, __FILE__ );
 } else {
-    define( 'PEB_PLUGIN_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.3.3' );
+    define( 'PEB_PLUGIN_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.3.4' );
 
     define( 'PEB_DIR_URL', plugin_dir_url( __FILE__ ) );
     define( 'PEB_DIR_PATH', plugin_dir_path( __FILE__ ) );
@@ -59,11 +59,13 @@ if ( function_exists( 'peb_fs' ) ) {
     
     require_once PEB_DIR_PATH . 'includes/core.php';
 
+    if (file_exists(PEB_DIR_PATH . 'includes/class-peb-promo-banner.php')) {
+        require_once PEB_DIR_PATH . 'includes/class-peb-promo-banner.php';
+    }
+
     add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), function( $links ) {
-		$help_link = '<a href="' . admin_url( 'edit.php?post_type=pdf_embed&page=peb_demo_page' ) . '" style="color:#f18500;font-weight:bold;">Help & Demos</a>';
-
-		$links[] = $help_link;
-
+		$help_link = '<a href="' . admin_url( 'edit.php?post_type=pdf_embed&page=peb_demo_page' ) . '" style="color:#f18500;font-weight:bold;">Get Helped</a>';
+        array_unshift($links, $help_link);
 		return $links;
 	} );
     

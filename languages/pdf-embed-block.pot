@@ -1,182 +1,412 @@
-# Copyright (C) 2023 bPlugins LLC
+# Copyright (C) 2026 bPlugins
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: PDF Embed Block 1.0.2\n"
+"Project-Id-Version: PDF Embed Block – share documents right inside your posts 1.3.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pdf-embed-block\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-13T06:37:37+00:00\n"
+"POT-Creation-Date: 2026-11-17T08:05:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pdf-embed-block\n"
 
 #. Plugin Name of the plugin
-msgid "PDF Embed Block"
+#: index.php
+msgid "PDF Embed Block – share documents right inside your posts"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: index.php
+msgid "https://bplugins.com/products/pdf-embed-block"
 msgstr ""
 
 #. Description of the plugin
+#: index.php
 msgid "Embed PDF files easily in your pages and posts."
 msgstr ""
 
 #. Author of the plugin
-msgid "bPlugins LLC"
+#: index.php
+msgid "bPlugins"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "http://bplugins.com"
+#: index.php
+msgid "https://bplugins.com"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3199
-msgid "Sized Container"
+#: includes/class-peb-promo-banner.php:386
+msgid "PDF Embed Block's Biggest Black Friday Sale is Live!"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3200
-msgid "In Line"
+#: includes/class-peb-promo-banner.php:387
+msgid "Save 45%"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3204
-msgid "General"
+#: includes/class-peb-promo-banner.php:391
+msgid "14+ Document Viewer Blocks"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3205
-msgid "Style"
+#: includes/class-peb-promo-banner.php:392
+msgid "Embed Word, Excel, PowerPoint Documents"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3220
-#: dist/editor.js:3520
-msgid " Loading"
+#: includes/class-peb-promo-banner.php:393
+msgid "Document Box Customization"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3225
-msgid "Adobe API Key (Client ID):"
+#: includes/class-peb-promo-banner.php:394
+msgid "Lightbox Document"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3230
-msgid "Save"
+#: includes/class-peb-promo-banner.php:395
+msgid "Docs, Slide, Sheet Emebed"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3235
-msgid "Adobe official site"
+#: includes/class-peb-promo-banner.php:401
+msgid "Grab The Deal Now →"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3273
-msgid "PDF Settings"
+#: includes/class-peb-promo-banner.php:408
+msgid "Dismiss"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3276
-msgid "PDF File:"
+#: includes/class-peb-promo-banner.php:409
+msgid "Dismiss banner"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3280
-msgid "Enter PDF URL"
+#: includes/class-peb-promo-banner.php:428
+msgid "Biggest Black Friday Sale - Save 45%"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3282
-msgid "PDF File Name:"
+#: includes/Init.php:29
+#: includes/Init.php:31
+msgid "PDF Embeds"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3289
-msgid "Embed Mode:"
+#: includes/Init.php:32
+msgid "PDF Embed"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3295
-msgid "Layout Settings"
+#: includes/Init.php:33
+msgid "Add New"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3296
-msgid "Width:"
+#: includes/Init.php:34
+msgid "Add New PDF Embed"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3298
-msgid "Height:"
+#: includes/Init.php:35
+msgid "Edit PDF Embed"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3304
+#: includes/Init.php:36
+msgid "New PDF Embed"
+msgstr ""
+
+#: includes/Init.php:37
+msgid "View PDF Embed"
+msgstr ""
+
+#: includes/Init.php:38
+msgid "View PDF Embeds"
+msgstr ""
+
+#: includes/Init.php:39
+msgid "Search PDF Embeds"
+msgstr ""
+
+#: includes/Init.php:40
+msgid "No PDF Embeds found."
+msgstr ""
+
+#: includes/Init.php:41
+msgid "No PDF Embeds found in Trash."
+msgstr ""
+
+#: includes/Init.php:42
+msgid "All PDF Embeds"
+msgstr ""
+
+#: includes/Init.php:43
+msgid "PDF Embed Archives"
+msgstr ""
+
+#: includes/RestAPI.php:19
+#: includes/RestAPI.php:44
+msgid "Invalid security token."
+msgstr ""
+
+#: includes/RestAPI.php:24
+#: includes/RestAPI.php:48
+msgid "You do not have permission to manage options."
+msgstr ""
+
+#: includes/RestAPI.php:36
+msgid "Data will be deleted on uninstall."
+msgstr ""
+
+#: includes/RestAPI.php:37
+msgid "Data will be preserved on uninstall."
+msgstr ""
+
+#: includes/RestAPI.php:68
+msgid "Global PDF viewer settings profile saved successfully."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:31
+msgid "Failed to save setting."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:40
+msgid "Are you sure? This will permanently delete all PDF Embed Block data (API keys, configurations, and settings) when the plugin is uninstalled."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:79
+msgid "Failed to save global viewer settings."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:123
+msgid "Global PDF Viewer Settings Profile"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:126
+msgid "Configure default viewer options that apply specifically to the PDF Embed block across your website."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:143
+msgid "Toolbar Controls"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:158
+#: src/pdf-embed/Settings.js:58
+msgid "Show Download PDF"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:161
+msgid "Display download button allowing visitors to save the PDF file."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:178
+#: src/pdf-embed/Settings.js:65
+msgid "Show Print PDF"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:181
+msgid "Display print button on toolbar for direct document printing."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:198
+#: src/pdf-embed/Settings.js:72
+msgid "Show Fullscreen Mode"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:201
+msgid "Allow users to expand the PDF viewer to full screen presentation mode."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:218
+msgid "Global Enforcement"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:233
+msgid "Apply Settings Globally to All PDFs"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:236
+msgid "Enabling this instantly overrides individual block settings across all posts and pages."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:254
+msgid "Individual blocks in the Gutenberg editor will automatically inherit these settings."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:302
+msgid "Delete Data on Uninstall"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:306
+msgid "When enabled, all plugin data will be permanently deleted when you uninstall (delete) the plugin. This includes:"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:310
+msgid "All PDF Embed posts (pdf_embed post type)"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:311
+msgid "All plugin settings and options"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:324
+msgid "This action cannot be undone."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:324
+msgid "Your data will be safe if you only deactivate the plugin."
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:335
+msgid "Data will be deleted on uninstall"
+msgstr ""
+
+#: src/bplugins-admin/Components/Settings.js:336
+msgid "Data will be preserved on uninstall"
+msgstr ""
+
+#: src/bplugins-admin/dashboard.js:23
+msgid "PDF Embed Block - Settings"
+msgstr ""
+
+#: src/pdf-embed/ApiKeyPlaceholder.js:48
+msgid "Adobe API Key Required"
+msgstr ""
+
+#: src/pdf-embed/ApiKeyPlaceholder.js:52
+msgid "To display PDF files with the official Adobe Embed API, enter your free Client ID below."
+msgstr ""
+
+#: src/pdf-embed/ApiKeyPlaceholder.js:66
+msgid "Enter Adobe Client ID..."
+msgstr ""
+
+#: src/pdf-embed/ApiKeyPlaceholder.js:99
+msgid "Saving..."
+msgstr ""
+
+#: src/pdf-embed/ApiKeyPlaceholder.js:99
+msgid "Save Key"
+msgstr ""
+
+#: src/pdf-embed/ApiKeyPlaceholder.js:104
+msgid "Don't have an API key? "
+msgstr ""
+
+#: src/pdf-embed/ApiKeyPlaceholder.js:111
+msgid "Get a free key from Adobe Official Site"
+msgstr ""
+
+#: src/pdf-embed/components/AlignToolbar.js:10
 msgid "Edit PDF:"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3307
-msgid "PDF Embed in left"
+#: src/pdf-embed/components/AlignToolbar.js:13
+msgid "Left"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3308
-msgid "PDF Embed in center"
+#: src/pdf-embed/components/AlignToolbar.js:14
+msgid "Center"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3309
-msgid "PDF Embed in right"
+#: src/pdf-embed/components/AlignToolbar.js:15
+msgid "Right"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3559
+#: src/pdf-embed/components/PDFFileSelector.js:19
+msgid "PDF File:"
+msgstr ""
+
+#: src/pdf-embed/components/PDFFileSelector.js:27
+msgid "Enter PDF URL"
+msgstr ""
+
+#: src/pdf-embed/components/PDFFileSelector.js:31
+msgid "PDF File Name:"
+msgstr ""
+
+#: src/pdf-embed/Edit.js:66
+#: src/pdf-embed/SettingsSaveForm.js:13
+msgid " Loading"
+msgstr ""
+
+#: src/pdf-embed/Edit.js:118
 msgid "Paste or type a PDF URL"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3535
-msgid "API Key (Client ID)"
+#: src/pdf-embed/Settings.js:31
+msgid "PDF Settings"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3537
-msgid "Generate a PDF Embed API Key (Client ID) from "
+#: src/pdf-embed/Settings.js:40
+msgid "Embed Mode:"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3539
-msgid "here"
+#: src/pdf-embed/Settings.js:50
+msgid "Viewer Options"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:3541
-msgid ". Amd insert the Client ID in the field of in the settings panel on the right."
+#: src/pdf-embed/Settings.js:53
+msgid "Global Settings Profile is active. Options are being controlled globally across all PDFs."
 msgstr ""
 
-#: block.json
+#: src/pdf-embed/Settings.js:79
+msgid "Layout Settings"
+msgstr ""
+
+#: src/pdf-embed/Settings.js:80
+msgid "Width:"
+msgstr ""
+
+#: src/pdf-embed/Settings.js:82
+msgid "Height:"
+msgstr ""
+
+#: src/pdf-embed/Settings.js:85
+msgid "Padding, Margin, Border & Shadow settings are available in the Pro version."
+msgstr ""
+
+#: src/pdf-embed/SettingsSaveForm.js:18
+msgid "Adobe API Key (Client ID):"
+msgstr ""
+
+#: src/pdf-embed/SettingsSaveForm.js:23
+msgid "Save"
+msgstr ""
+
+#: src/pdf-embed/SettingsSaveForm.js:32
+msgid "Adobe official site"
+msgstr ""
+
+#: src/pdf-embed/utils/options.js:4
+msgid "Sized Container"
+msgstr ""
+
+#: src/pdf-embed/utils/options.js:5
+msgid "In Line"
+msgstr ""
+
+#: src/pdf-embed/utils/options.js:12
+msgid "General"
+msgstr ""
+
+#: src/pdf-embed/utils/options.js:13
+msgid "Style"
+msgstr ""
+
+#: src/pdf-embed/block.json
 msgctxt "block title"
 msgid "PDF Embed"
 msgstr ""
 
-#: block.json
+#: src/pdf-embed/block.json
 msgctxt "block description"
 msgid "Display PDF files easily in your pages and posts"
 msgstr ""
 
-#: block.json
+#: src/pdf-embed/block.json
 msgctxt "block keyword"
 msgid "pdf viewer"
 msgstr ""
 
-#: block.json
+#: src/pdf-embed/block.json
 msgctxt "block keyword"
 msgid "embed pdf"
 msgstr ""
 
-#: block.json
+#: src/pdf-embed/block.json
 msgctxt "block keyword"
 msgid "display pdf"
 msgstr ""
